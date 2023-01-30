@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: CustomerAccountBES
+  datasource:
+    url: jdbc:mariadb://localhost:3306/ecom_customer
+    username: ecom_customer_user
+    password: abc123
+  jpa:
+    database: mysql
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  servlet:
+server:
+  port: 8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  pattern:
+    console: "%clr(%d{HH:mm:ss.SSS}){blue} %clr(%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]){yellow} %clr(:){red} %clr(%m){faint}%n"
+  level:
+    com.jianhuazhao6.ecom.customeraccountbes: info
+    root: info
+    sql: info
+  file:
+    name: /home/zjh/logs/CustomerAccountBES.log
