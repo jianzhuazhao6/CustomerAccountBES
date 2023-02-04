@@ -1,17 +1,22 @@
 package com.jianhuazhao6.ecom.customeraccountbes.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.util.Date;
+import java.time.Instant;
 
 @MappedSuperclass
 @Data
 @EntityListeners(AuditingEntityListener.class)
+@SuperBuilder
+@NoArgsConstructor
 public class BaseEntity {
 
     @Id
@@ -20,10 +25,10 @@ public class BaseEntity {
     @CreatedDate
     @Column
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
+    private Instant createdDate;
     @Column
     @Temporal(TemporalType.TIMESTAMP)
-    private Date modifiedDate;
+    private Instant modifiedDate;
     @CreatedBy
     @Column
     private String createdUser;
