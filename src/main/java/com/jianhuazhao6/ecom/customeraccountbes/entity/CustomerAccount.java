@@ -1,9 +1,15 @@
 package com.jianhuazhao6.ecom.customeraccountbes.entity;
 
 import com.jianhuazhao6.ecom.customeraccountbes.commom.Gender;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Index;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -16,8 +22,8 @@ import java.time.Instant;
 @Entity
 @SuperBuilder(toBuilder = true)
 @Table(name = "customer_account", indexes = {
-        @Index(name = "idx_customeraccount_user_name", columnList = "user_name"),
-        @Index(name = "idx_customeraccount_email", columnList = "email")
+        @Index(name = "idx_customeraccount_user_name", columnList = "user_name", unique = true),
+        @Index(name = "idx_customeraccount_email", columnList = "email", unique = true)
 })
 public class CustomerAccount extends BaseEntity {
     @Column(name = "user_name", length = 30, nullable = false, unique = true)
