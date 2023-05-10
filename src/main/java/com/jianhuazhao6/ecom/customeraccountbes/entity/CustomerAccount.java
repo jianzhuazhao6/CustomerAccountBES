@@ -11,16 +11,19 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.time.Instant;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @SuperBuilder(toBuilder = true)
+@EqualsAndHashCode(callSuper=false)
 @Table(name = "customer_account", indexes = {
         @Index(name = "idx_customeraccount_user_name", columnList = "user_name", unique = true),
         @Index(name = "idx_customeraccount_email", columnList = "email", unique = true)
@@ -41,7 +44,7 @@ public class CustomerAccount extends BaseEntity {
     private String email;
     @Temporal(TemporalType.DATE)
     @Column(name = "birthday")
-    private Instant birthday;
+    private Date birthday;
     @Column(name = "phone_number",length = 30)
     private String phoneNumber;
     @Column(name = "address", length = 1000)

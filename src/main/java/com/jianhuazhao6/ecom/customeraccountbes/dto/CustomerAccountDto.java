@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.Instant;
+import java.util.Date;
 
 @Data
 @Builder
@@ -19,7 +20,7 @@ public class CustomerAccountDto {
     String lastName;
     String gender;
     String email;
-    Instant birthday;
+    Date birthday;
     String phoneNumber;
     String address;
 }

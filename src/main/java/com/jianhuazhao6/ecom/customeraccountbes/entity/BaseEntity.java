@@ -15,7 +15,7 @@ import java.time.Instant;
 @MappedSuperclass
 @Data
 @EntityListeners(AuditingEntityListener.class)
-@SuperBuilder
+@SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 public class BaseEntity {
 
